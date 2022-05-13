@@ -1,0 +1,83 @@
+@import './_nullstyle';
+@import './var';
+
+.body {
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+@import './form/form';
+@import './btnShowForm.scss';
+
+.tweets {
+    position: relative;
+    padding: 50px 0 50px 0;
+    &__list {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+    }
+    &__item {
+        flex: 1 1 auto;
+    }
+    &__form {
+
+    }
+}
+
+.item-tweet {
+    min-width: 300px;
+    max-width: 300px;
+    box-shadow: 0px 5px 14px -5px rgba(34, 60, 80, 0.38);
+    border-radius: 10px;
+    padding: 1em;
+    &__top-block {
+        padding: 0 0 10px 0;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        position: relative;
+        &::after {
+            content: '';
+            position: absolute;
+            height: 1px;
+            width: 100%;
+            left: 0;
+            bottom: 0;
+            background-color: rgb(220, 220, 220);
+
+        }
+    }
+    &__avatar {
+        background: rgb(222, 217, 217);
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+    }
+    &__text {
+        margin-bottom: 10px;
+    }
+    &__likes {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    &__logo {
+        display: block;
+        width: 20px;
+        height: 20px;
+        border: 2px solid rgb(222, 217, 217);
+        border-radius: 50%;
+        cursor: pointer;
+        &:hover {
+            transform: scale(110%);
+            border-color: rgb(211, 83, 83);
+        }
+    }
+}
+

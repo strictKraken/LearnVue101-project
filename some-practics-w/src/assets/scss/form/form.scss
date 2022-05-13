@@ -1,0 +1,31 @@
+.form-tweet {
+    z-index: 1;
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%,-20%);
+
+    box-shadow: 0px 5px 14px -5px rgba(34, 60, 80, 0.38);
+    background: #fff;
+    border-radius: 10px;
+    padding: 2em;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    &__textarea {
+        width: 300px;
+        height: 300px;
+        resize: none;
+    }   
+
+
+    &__btn {
+        padding: 1em 0 1em 0;
+        border-radius: 15px;
+
+        &:hover {
+            
+        }
+    }
+}

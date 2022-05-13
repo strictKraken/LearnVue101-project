@@ -1,0 +1,24 @@
+.tweets__btn-show-form {
+    font-size: 25px;
+    position: fixed;
+    width: 55px;
+    height: 55px;
+    background-color: rgb(164, 181, 250);
+    border-radius: 50%;
+    bottom: 10%;
+    right: 30%;
+
+    //----Animation--------
+    transition: all 0.1s ease 0s;
+    &:hover {
+        background-color: rgb(138, 161, 255);
+        transform: scale(120%);
+    }
+    &-enter-active { 
+        //transition: all .3s ease;
+    }
+    &-leave-active {
+        //transition: all .3s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+    }
+    
+}
