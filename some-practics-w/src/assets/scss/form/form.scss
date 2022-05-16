@@ -29,3 +29,12 @@
         }
     }
 }
+//-------------Animation-----------------
+
+.slide-form-enter-active, .slide-form-leave-active {
+    transition: all 0.3s ease 0s;
+}
+.slide-form-enter-from, .slide-form-leave-to {
+    transform: translate(-50%,-100%);
+    opacity: 0;
+}
