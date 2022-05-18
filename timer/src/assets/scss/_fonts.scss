@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inconsolata&display=swap');
+$Bebas: 'Bebas Neue', cursive;
+$Inconsolata:  'Inconsolata', monospace;
+@font-face {
+    font-family: 'Gogh';
+    src: url('../../fonts/Gogh-ExtraBold.woff2') format('woff2'),
+        url('../../fonts/Gogh-ExtraBold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}

@@ -1,0 +1,44 @@
+.btn {
+    font-family: Inconsolata;
+    font-size: 25px;
+    line-height: calc(26 / 25 * 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+
+    &__body {
+        background-color: transparent;  
+        width: 75px;
+        height: 75px;
+        margin-bottom: 16px;
+        border-radius: 50%;
+
+
+        &:hover {
+            svg {
+                path {
+                    fill: #761e88;
+                }
+            }
+        }
+    }
+    &__text {
+        color: #85FC4D;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+    
+}
+@media (max-width: $tableWidth) {
+    .btn {
+        font-size: 20px;
+        &__body {
+            svg {
+                width: 65px;
+                height: 65px;
+            }
+        }
+    }
+}
