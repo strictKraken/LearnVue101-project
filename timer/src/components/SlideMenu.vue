@@ -1,75 +1,87 @@
 <template>
-    <div class="SlideMenu">
+        <div class="SlideMenu" 
+             v-bind:class="{SlideMenu__active : isClassActive}"
+             >
+
         <div class="SlideMenu__body">
             <h4 class="SlideMenu__title">
-                Settings
+                <slot name="title">SetUp</slot>
             </h4>
             <ul class="SlideMenu__list">
-                <li class="SlideMenu__item">
-                    Time
-                    <!--<button @click.prevent="">
-                        <span>Time</span>
-                    </button>-->
-                </li>
-                <li class="SlideMenu__item">
-                    Language
-                    <!--<button @click.prevent="">
-                        <span>Language</span>
-                    </button>-->
+                <li class="SlideMenu__item" v-for="item in list" :key="item.id">
+                    <slot name="item"> {{ item }} </slot>
                 </li>
             </ul>
         </div>
     </div>
+    
 </template>
 
 <script>
+import {ref} from 'vue';
 export default {
+    props: ['items'],
     name: 'SlideMenu',
+    setup(props) {
+        let list = ref(props.items);
+        let isClassActive = ref(true);
+        let addBlur = () => {
+            isClassActive.value = !isClassActive.value;
+            console.log('added Blur');
+        }
+        return {
+            isClassActive,
+            addBlur,
+            list,
+        }
+    }
 }
 
 </script>
 
 <style lang="scss">
-    .SlideMenu {
-        z-index: 0;
-        background: rgba(82, 82, 82, 0.52);
-        backdrop-filter: blur(8px);
+.SlideMenu {
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    &__body {
         position: absolute;
-        min-width: 100%;
-        height: 100%;
-        top: 0;
-        &__body {
-            z-index: 98;
-            max-width: 100%;
-            height: 100%;
-            margin: 100px 160px 0 0;
-            padding: 40px 100px;
-            text-decoration: underline;
-            background: #171717;
-            color: #fff;
-        }
-        
-        &__title {
-            text-align: end;
-            font-family: inconsolata;
-            font-size: 50px;
-            line-height: calc(53 / 50 * 100%);
-        }
+        top: 100px;
+        left: 0;
+        right: 160px;
+        bottom: 0;  
+        padding: 40px 100px;
+        text-decoration: underline;
+        background: #171717;
+        color: #fff;
+    }
+    
+    &__title {
+        text-align: end;
+        font-family: inconsolata;
+        font-size: 50px;
+        line-height: calc(53 / 50 * 100%);
+        margin-bottom: 60px;
+    }
 
-        &__list {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
+    &__list {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+    &__item {   
+        font-size: 25px;
+        line-height: calc(25 / 26 * 100%);
+        margin-bottom: 32px;
+        & > button {
+            background: transparent;
         }
-        &__item {
-            //font-family: inconsolata;
-            font-size: 25px;
-            line-height: calc(25 / 26 * 100%);
-            & > button {
-                background: transparent;
-            }
-        }
+    }
 
-    }   
-
+}   
+    
 </style>

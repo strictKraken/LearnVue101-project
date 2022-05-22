@@ -2,22 +2,12 @@
     <div class="main">
         <div class="container">
             <div class="main__sign">
-                <SignText />
+                <SignText @onTap = 'handleTap'/>
             </div>
             <div class="main__timer">
-                <StopWatch />
+                <StopWatch ref='StopWatch'/>
             </div>
-            <div class="main__img-left">
-                <img src="@/assets/img/left-img.jpg" alt="">
-                <img src="@/assets/img/left-img.jpg" alt="">
-                <img src="@/assets/img/left-img.jpg" alt="">
-                <img src="@/assets/img/left-img.jpg" alt="">
-            </div>
-            <div class="main__img-right">
-                <img class="main__img-green" src="@/assets/img/img-left(1).jpg" alt="">
-                <img src="@/assets/img/cursed.jpg" alt="">
-                <img src="@/assets/img/cursed_bigger.jpg" alt="">
-            </div>
+            
             <div class="main__corean-sign">
                 세상에서 <br>
                 보고싶은  <br>
@@ -28,11 +18,23 @@
                 어라<br>
             </div>
             <div class="main__buttons">
-                <BtnRestart />
-                <BtnStop />
+                <BtnRestart @click="btnRestart"/>
+                <BtnStop @click="btnStop"/>
             </div>
         </div>
-    </div>
+        
+    </div>  
+    <div class="main__img-left">
+            <img src="@/assets/img/left-img.jpg" alt="">
+            <img src="@/assets/img/left-img.jpg" alt="">
+            <img src="@/assets/img/left-img.jpg" alt="">
+            <img src="@/assets/img/left-img.jpg" alt="">
+        </div>
+        <div class="main__img-right">
+            <img class="main__img-green" src="@/assets/img/img-left(1).jpg" alt="">
+            <img src="@/assets/img/cursed.jpg" alt="">
+            <img src="@/assets/img/cursed_bigger.jpg" alt="">
+        </div>  
 </template>
 
 <script>
@@ -41,13 +43,37 @@ import SignText from './SignText.vue';
 import BtnRestart from './Btn-Restart.vue';
 import BtnStop from './Btn-Stop.vue';
 
+import {ref} from 'vue';
+
 export default {
     components: {
         StopWatch,
         SignText,
         BtnStop,
         BtnRestart,
-    }   
+    },
+    setup () {
+        let isStartedTimer = ref(null);
+        const StopWatch = ref(null);
+
+        const handleTap = () => {
+            StopWatch.value.startTimer();
+        }
+        const btnStop = () => {
+            StopWatch.value.stopTimer();
+        }
+        const btnRestart = () => {
+            StopWatch.value.resetTimer();
+        }
+
+        return {
+            handleTap,
+            isStartedTimer,
+            StopWatch,
+            btnStop,
+            btnRestart,
+        }
+    }
 }
 </script>
         
