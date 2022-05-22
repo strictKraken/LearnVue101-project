@@ -1,5 +1,5 @@
 <template>
-    <div class="sing">
+    <div @click="clickToSign" class="sing">
         <svg width="1052" height="230" viewBox="0 0 1052 230" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M51.2909 82.8204C53.696 101.442 54.7601 120.082 57.5999 138.694C59.0446 148.163 63.3515 156.802 65.0124 165.92C66.2063 172.475 71.4977 190.398 77.551 192.407" stroke="#85FC4D" stroke-width="9" stroke-linecap="round"/>
                 <path d="M6.40324 110.22C31.8456 106.011 54.4061 93.647 78.7088 87.4927C84.4192 86.0466 88.4035 77.6425 93.7621 74.9548" stroke="#85FC4D" stroke-width="9" stroke-linecap="round"/>
@@ -24,11 +24,23 @@
 </template>
 
 <script>
+import {ref} from "vue";
+
 export default {
-    name: 'SignText'
+    name: 'SignText',
+    emits: ['onTap'],
+    
+    setup(_, {emit}) {
+        let isClick = ref(false);
+        const clickToSign = () => {
+            isClick.value = !isClick.value;
+            emit('onTap',{
+                isClick: isClick.value,
+            });
+        }
+        return {
+            clickToSign,
+        }
+    }
 }
-
 </script>
-
-<style>
-</style>
