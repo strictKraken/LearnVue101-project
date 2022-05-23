@@ -3,30 +3,28 @@
 		<div class="container">
 			<nav class="header__navigation">
 				<ul class="header__list">
-					<li @click="showSideMenuHelp" class="header__item">Help</li>
-					<li @click="showSideMenu" class="header__item">Settings</li>
+					<li @click="showSideMenu(link.name)" class="header__item" v-for="(link) in headerList" :key="link.id">
+						{{ link.name }}
+					</li>
+					<!-- <li @click="showSideMenu" :slidemenuItem="Help" class="header__item">Help</li>
+					<li @click="showSideMenu" :slideMenuItem="Settings" class="header__item">Settings</li> -->
 				</ul>
 			</nav>
 		</div>
 	</header>
 	<Transition name="Slide-Menu">
-		<SlideMenu v-if="isOpen" :items="settings">
-			<template #title>
-				Settings
-			</template>
-		</SlideMenu>	
-
-		
-	</Transition>
-	<Transition name=Slide-Menu>
-		<SlideMenu v-if="isOpenHelp" >
+		<SlideMenu v-if="isOpen && slideMenuItem === 'Help' " >
 			<template #title>
 				Help
 			</template>
+		</SlideMenu>	
+		<SlideMenu v-else-if="isOpen && slideMenuItem === 'Settings' " >
+			<template #title>
+				Settings
+			</template>
 		</SlideMenu>
 	</Transition>
-
-
+	
 	<Transition name="Blur">
 		<div v-if="isClassActive" class="blur"></div>
 	</Transition>
@@ -37,37 +35,42 @@ import SlideMenu from '@/components/SlideMenu.vue';
 import { ref } from 'vue';
 export default {
 	components: {
-	SlideMenu,
-	
+	SlideMenu,	
 },
 	setup() {
-		const settings = [
-			'Time',
-			'Language',
-		]
+		let slideMenuItem = ref('');
+		const headerList = {
+			help: {
+				name: "Help"
+			},
+			settings: {
+				name: 'Settings',
+				list: [
+					'Time',
+					'Language',
+				],
+			}	
+		}
 		
 		let isClassActive = ref(false);
-		let isOpenHelp = ref(false);
-		const isOpen = ref(false);
-
-
-		let showSideMenu = () => {
-			isOpen.value = !isOpen.value;
-			isClassActive.value = !isClassActive.value;
-		}
-
-		let showSideMenuHelp = () => {
-			isOpenHelp.value = !isOpenHelp.value;
-			isClassActive.value = !isClassActive.value;
+		let isOpen = ref(false);
+		const showSideMenu = (name) => {
+			if (slideMenuItem.value !== name) {
+				slideMenuItem.value = name ;
+				isOpen.value = true;
+				isClassActive.value = true;
+			} else {
+				isOpen.value = !isOpen.value;
+				isClassActive.value = !isClassActive.value;
+			}
 		}
 
 		return {
 			isOpen,
 			showSideMenu,
 			isClassActive,
-			settings,
-			isOpenHelp,
-			showSideMenuHelp,
+			slideMenuItem,
+			headerList,
 		}
 	}
 }

@@ -20,19 +20,28 @@
 <script>
 import {ref} from 'vue';
 export default {
-    props: ['items'],
+    //props: ['items','isOpen'],
     name: 'SlideMenu',
     setup(props) {
+        let isOpen = ref(props.isOpen);
+
         let list = ref(props.items);
         let isClassActive = ref(true);
         let addBlur = () => {
             isClassActive.value = !isClassActive.value;
             console.log('added Blur');
         }
+
+
+        let showMenu = () => {
+            return 0
+        }
         return {
             isClassActive,
             addBlur,
             list,
+            isOpen,
+            showMenu,
         }
     }
 }
