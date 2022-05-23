@@ -1,6 +1,6 @@
 <template>
-    <div class="btn">
-        <button class="restart__btn btn__body"> 
+    <div @click="clickBtn" class="btn">
+        <button class="restart__btn btn__body" :class="{pressed: isClick}"> 
             <svg width="76" height="76" viewBox="0 0 76 76" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M48.6875 23.75H27.3125C25.3531 23.75 23.75 25.3531 23.75 27.3125V48.6875C23.75 50.6469 25.3531 52.25 27.3125 52.25H48.6875C50.6469 52.25 52.25 50.6469 52.25 48.6875V27.3125C52.25 25.3531 50.6469 23.75 48.6875 23.75ZM38 0C17.0109 0 0 17.0109 0 38C0 58.9891 17.0109 76 38 76C58.9891 76 76 58.9891 76 38C76 17.0109 58.9891 0 38 0ZM38 68.875C20.9742 68.875 7.125 55.0243 7.125 38C7.125 20.9757 20.9742 7.125 38 7.125C55.0258 7.125 68.875 20.9757 68.875 38C68.875 55.0243 55.0258 68.875 38 68.875Z" fill="#A331B9"/>
             </svg>
@@ -12,7 +12,48 @@
 </template>
 
 <script>
+import {ref} from 'vue';
+
 export default {
     name: 'Btn-Stop',
+    setup() {
+        let isClick = ref(false);
+        const clickBtn = () => {
+            isClick.value = true;
+            console.log('help');
+            setTimeout(() => {
+                isClick.value = false;
+            }, 100)
+        }
+
+        return {
+            isClick,
+            clickBtn,
+        }
+    }
 }
 </script>
+
+<style>
+.btn__body {
+    transition: all 0.2s ease ;
+}
+.pressed {
+    /* animation: pressedBtn 0.4s ease both; */
+    transition: all 0.2s ease ;
+    transform: scale(90%);
+    /* transform: scale(100%); */
+}
+@keyframes pressedBtn {
+    0%{
+        transform: scale(100%);
+    }
+    100%{
+        transform: scale(90%);
+    }
+    0% {
+        transform: scale(100%);
+    }
+}
+
+</style>

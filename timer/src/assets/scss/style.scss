@@ -16,6 +16,7 @@ body,html {
     background: url(@/assets/img/background.jpg) no-repeat;
     background-size: cover;
     background-position: center;
+    overflow-x: hidden;
 }
 
 .wrapper {
