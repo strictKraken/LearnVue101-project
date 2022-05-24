@@ -5,7 +5,7 @@
 	<div class="container">
 		<HeaderBox />
 		<MainPage />
-	</div>`
+	</div>
 </template>
 
 <script>
@@ -26,11 +26,9 @@ export default {
 	.app {		
 		position: relative;
 		&__blur {
-			//margin: 0 24px;
 			position: absolute;
 			background: rgba(6, 6, 6, 0.76);
 			backdrop-filter: blur(40px);
-			//min-width: 100%;
 			min-height: 100%;
 			top: 0;
 			left: 24px;

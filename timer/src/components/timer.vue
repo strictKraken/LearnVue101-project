@@ -4,8 +4,10 @@
 			{{ Timer.time }}
 		</div>
 		<div class="StopWatch__mseconds">
-			{{ Timer.msTime }} 
-			<span class="StopWatch__text-mc">mc</span>
+			<div class="StopWatch__ms">
+				{{ Timer.msTime }} 
+			</div>
+			<div class="StopWatch__text-mc">ms</div>
 		</div>
 	</div>
 </template>
@@ -19,7 +21,7 @@ export default {
 	setup() {
 		let Timer = ref({
 			time: '00:00',
-			msTime: '00000000000000',
+			msTime: '0000',
 		});
 
 		let TimerSaved = ref(null);
@@ -114,6 +116,14 @@ export default {
 			font-family: Gogh;
 			font-size: 44px;
 			line-height: calc(44 / 61 * 100%);
+			display: flex;
+			//text-align: center;
+			justify-content: center;
+			gap: 8px;
+			align-items: flex-end;
+		}
+		&__ms {
+			flex: 0 123px
 		}
 		&__text-mc {
 			font-family: Gogh;

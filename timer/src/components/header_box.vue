@@ -6,8 +6,6 @@
 					<li @click="showSideMenu(link.name)" class="header__item" v-for="(link) in headerList" :key="link.id">
 						{{ link.name }}
 					</li>
-					<!-- <li @click="showSideMenu" :slidemenuItem="Help" class="header__item">Help</li>
-					<li @click="showSideMenu" :slideMenuItem="Settings" class="header__item">Settings</li> -->
 				</ul>
 			</nav>
 		</div>
@@ -26,7 +24,7 @@
 	</Transition>
 	
 	<Transition name="Blur">
-		<div v-if="isClassActive" class="blur"></div>
+		<div v-if="isOpen" class="blur" @click="closeOutSideMenu"></div>
 	</Transition>
 </template>
 
@@ -50,8 +48,9 @@ export default {
 					'Language',
 				],
 			}	
-		}
+		}	
 		
+
 		let isClassActive = ref(false);
 		let isOpen = ref(false);
 		const showSideMenu = (name) => {
@@ -65,12 +64,17 @@ export default {
 			}
 		}
 
+		let closeOutSideMenu = () => {
+			isOpen.value = false;
+			console.log('close shit');
+		}
 		return {
 			isOpen,
 			showSideMenu,
 			isClassActive,
 			slideMenuItem,
 			headerList,
+			closeOutSideMenu
 		}
 	}
 }
@@ -113,6 +117,7 @@ export default {
 
 .blur {
 	position: absolute;
+	z-index: 4;
 	top: 0;
 	left: 0;
 	right: 0;

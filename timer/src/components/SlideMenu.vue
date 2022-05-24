@@ -50,18 +50,18 @@ export default {
 
 <style lang="scss">
 .SlideMenu {
-    z-index: 2;
+    z-index: 5;
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 100px;
+    right: 160px;
     bottom: 0;
     left: 0;
 
     &__body {
         position: absolute;
-        top: 100px;
+        top: 0px;
         left: 0;
-        right: 160px;
+        right: 0px;
         bottom: 0;  
         padding: 40px 100px;
         text-decoration: underline;
