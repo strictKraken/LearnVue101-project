@@ -2,10 +2,10 @@
 	<div id="app__blur" class="app__blur">
 	</div>
 
-	<div class="container">
+	<!-- <div class="container"> -->
 		<HeaderBox />
 		<MainPage />
-	</div>
+	<!-- </div> -->
 </template>
 
 <script>

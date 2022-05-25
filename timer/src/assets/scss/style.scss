@@ -1,7 +1,10 @@
 @import './_nullstyle.scss';
 @import './vars';
 @import './fonts';
+
 @import './adaptive';
+@import './mainPage-adaptive';
+
 
 .container {
     max-width: 1150px;

@@ -1,6 +1,6 @@
 <template>
 	<div class="main">
-		<div class="container">
+		<div class="main__container container">
 			<div class="main__sign">
 				<SignText @onTap = 'handleTap'/>
 			</div>
@@ -78,7 +78,23 @@ export default {
 <style lang="scss">
 .main {
 	z-index: 3;
+	height: 100%;
+	&__container {
+		display: flex;
+		flex-direction: column;
+	}
+	&__sign {
+
+	}
+	&__timer {
+		flex: 1 auto;
+	}
+	&__buttons {
+		justify-self: flex-end;
+	}
+
 }
+
 .main {
 	position: relative;
 	&__sign {

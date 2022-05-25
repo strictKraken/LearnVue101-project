@@ -6,7 +6,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-
+    -webkit-tap-highlight-color: transparent;
 
     &__body {
         background-color: transparent;  

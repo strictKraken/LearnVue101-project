@@ -85,7 +85,7 @@
 //
 @media (max-width: $smTableWidth) {
     .StopWatch__main {
-        font-size: 250px;
+        font-size: 240px;
         margin-bottom: 20px;    
     }
     .sing {
@@ -123,4 +123,26 @@
         }
     }
     
+}
+
+
+//---------Slide-Menu------------//
+@media (max-width: $tableWidth) {
+    .SlideMenu {
+        top: 70px;
+        right: 0;
+
+        &__body {
+            padding: 20px 15px;
+        }
+        &__title {
+
+        }
+        &__list {
+
+        }
+        &__item {
+
+        }
+    }
 }

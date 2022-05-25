@@ -11,14 +11,14 @@
 		</div>
 	</header>
 	<Transition name="Slide-Menu">
-		<SlideMenu v-if="isOpen && slideMenuItem === 'Help' " >
+		<SlideMenu v-if="isOpen && slideMenuItem === 'Help'" >
 			<template #title>
-				Help
+				{{ headerList.help.name }}
 			</template>
 		</SlideMenu>	
-		<SlideMenu v-else-if="isOpen && slideMenuItem === 'Settings' " >
+		<SlideMenu v-else-if="isOpen && slideMenuItem === 'Settings' " :items="headerList.settings.list">
 			<template #title>
-				Settings
+				{{ headerList.settings.name }}
 			</template>
 		</SlideMenu>
 	</Transition>
@@ -37,9 +37,10 @@ export default {
 },
 	setup() {
 		let slideMenuItem = ref('');
-		const headerList = {
+		let headerList = {
 			help: {
-				name: "Help"
+				name: "Help",
+				list: [],
 			},
 			settings: {
 				name: 'Settings',
@@ -50,7 +51,6 @@ export default {
 			}	
 		}	
 		
-
 		let isClassActive = ref(false);
 		let isOpen = ref(false);
 		const showSideMenu = (name) => {
@@ -66,7 +66,6 @@ export default {
 
 		let closeOutSideMenu = () => {
 			isOpen.value = false;
-			console.log('close shit');
 		}
 		return {
 			isOpen,

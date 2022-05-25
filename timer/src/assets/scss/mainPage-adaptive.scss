@@ -1,0 +1,18 @@
+@media (max-width: $smTableWidth ){
+	.main {
+		&__sign {
+			flex: 1 30vh;
+			align-items: center;
+			svg {}
+		}
+	}
+}
+
+@media (max-width: $phoneWidth) {
+	.main {
+		&__corean-sign {
+			left: 15vw;
+			top: 60%;
+		}
+	}
+}
