@@ -22,7 +22,7 @@ export default {
 		height: 100%;
 	}
 	body, html {
-		height: 100%;
+		// height: 100%;
 	}
 	//width
 	::-webkit-scrollbar {
@@ -31,6 +31,7 @@ export default {
 	//track
 	::-webkit-scrollbar-track {
 		background: rgb(202, 210, 245);
+		//background: transparent;
 	}
 	//handle
 	::-webkit-scrollbar-thumb {

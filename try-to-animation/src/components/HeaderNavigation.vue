@@ -1,5 +1,5 @@
 <template>
-    <header class="header fixed right-20 top-20 flex justify-end z-50">
+    <header class="header fixed right-20 top-20 flex justify-end z-50 ">
         <HeaderNavigationBurger></HeaderNavigationBurger>
     </header>
 </template>

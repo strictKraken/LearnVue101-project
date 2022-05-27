@@ -3,7 +3,7 @@
         <!-- t -->
         <!-- <span class="sign__letter hover-sign">
             <svg width="144" height="176" viewBox="0 0 144 176" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g filter="url(#filter0_f_132_332)">
+<g filter="url(#filter0_f_132_332)"
 <path d="M73.318 33.4213C75.8845 53.3833 77.0201 73.3644 80.0505 93.3163C81.5922 103.466 86.1884 112.727 87.9608 122.502C89.2348 129.529 94.8816 148.742 101.341 150.896" stroke="#85FC4D" stroke-width="8" stroke-linecap="round"/>
 <path d="M25.4165 62.7934C52.5673 58.2806 76.6425 45.0272 102.577 38.4299C108.671 36.8798 112.923 27.8708 118.641 24.9897" stroke="#85FC4D" stroke-width="8" stroke-linecap="round"/>
 <path d="M73.318 33.4213C75.8845 53.3833 77.0201 73.3644 80.0505 93.3163C81.5922 103.466 86.1884 112.727 87.9608 122.502C89.2348 129.529 94.8816 148.742 101.341 150.896" stroke="#85FC4D" stroke-width="9" stroke-linecap="round"/>
@@ -283,7 +283,7 @@
         <path d="M4.87524 5.03519C33.6135 23.1661 60.7398 40.6987 95.0868 45.3223" stroke="#85FC4D" stroke-width="9" stroke-linecap="round"/>
         </svg>
         </span> -->
-        <svg  width="1155" height="280" viewBox="0 0 1155 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg width="1155" height="280" viewBox="0 0 1155 280" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g filter="url(#filter0_f_164_62)">
             <path d="M73.318 108.421C75.8845 128.383 77.0201 148.364 80.0505 168.316C81.5922 178.466 86.1884 187.727 87.9608 197.502C89.2348 204.529 94.8816 223.742 101.341 225.896" stroke="#85FC4D" stroke-width="8" stroke-linecap="round"/>
             <path d="M25.4165 137.793C52.5673 133.281 76.6425 120.027 102.577 113.43C108.671 111.88 112.923 102.871 118.641 99.9897" stroke="#85FC4D" stroke-width="8" stroke-linecap="round"/>
@@ -525,9 +525,12 @@ import {ref} from "vue";
 import $ from 'jquery';
 
 $(document).ready(function() {
-    let svgLetters = ($("svg").find("g"));
+    let svgLetters = $(".sign").find("svg > path");
+    //console.log($(svgLetters));
     $(svgLetters).addClass("hover-sign");
 });
+
+
 export default {
     name: 'SignText',
     emits: ['onTap'],
@@ -550,57 +553,22 @@ export default {
     .sign {
         display: flex;
         position: relative;
-        
-        & > span {
-            // &:nth-child(1) {
-            //     transform: translate(0,50px);   
-            // }
-            // &:nth-child(2) {
-            //     transform: translate(0,30px);   
-            // }
-            // &:nth-child(3) {
-            //     transform: translate(-25px,5px);
-            // }
-            // &:nth-child(4) {
-            //     transform: translate(0,-30px);
-            // }
-            // &:nth-child(5) {
-            //     transform: translate(-70px,20px);
-            // }
-            // &:nth-child(6) {
-                
-            // }
-            // &:nth-child(7) {
-                
-            // }
-            // &:nth-child(8) {
-                
-            // }
-            // &:nth-child(9) {
-                
-            // }
-            // &:nth-child(10) {
-                
-            // }
-        }
 
-        &__letter {
-                
-        }  
+       
     }
     .hover-sign {
-        & > path {
-            stroke: rgb(103, 38, 255);
-        }
+        transition: all 0.3s ease;
         &:hover {            
-            path {
-                stroke: rgb(103, 38, 255);
-            }                
+            //stroke: rgb(103, 38, 255);
+            //stroke-width: 30px; 
+            width: 150%;
+            height: 150%;
         }
     }
     @keyframes color-change {
         100% {
-             stroke: rgb(103, 38, 255);
+            stroke: rgb(103, 38, 255);
+            
         }
         0% {
             stroke: #85FC4D;
