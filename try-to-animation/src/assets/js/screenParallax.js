@@ -5,7 +5,7 @@ import $ from 'jquery';
 export function screenParallax($mainPage) {
 	const speedScroll = 60;
 
-	$(window).on('scroll',function(){
+	function scrollParalax(){
 		let $scrollPosition = $(window).scrollTop();
 		let $windowHeight = $(window).height();
 
@@ -14,10 +14,12 @@ export function screenParallax($mainPage) {
 			"transform", `translateY(${$scrollPosition * speedScroll /$windowHeight}vh)`
 			)
 		}
-	})
+	}
+	scrollParalax();
+	$(window).on('scroll', scrollParalax);
+	
 }
 
 export function sliderParallax($Slider) {
 	console.log($($Slider));
-	// const $Slides = $($Slider).find("")
 }

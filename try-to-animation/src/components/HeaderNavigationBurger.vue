@@ -9,31 +9,40 @@
 </template>
 
 <script>
-import * as inverseColor from '@/assets/js/inverseColor.js';
-import $ from 'jquery'
-$(document).ready(function() {
-    inverseColor.inverseColor();
+import {ref,onUpdated, onMounted, onUnmounted} from "vue";
+import {inverseColor} from '@/assets/js/inverseColor.js';
 
-})
-import {ref} from "vue";
 export default {
     name: "HeaderNavigationBurger",
-    emits: [''],
+
     setup() {
         let isBurgerOpen = ref(false);
         let burgerOpen = () => {
             isBurgerOpen.value = !isBurgerOpen.value;
         }
-        
+        onUpdated(() => {
+			inverseColor();
+		});
+        onMounted(() => {
+            window.addEventListener('scroll', function scroll() {
+				inverseColor();
+			});
+        }); 
+        onUnmounted(() => {
+            window.removeEventListener('scroll', function scroll() {});        
+        });
         return {
             burgerOpen,
             isBurgerOpen,
         }
-    },
+    }, 
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
+    .inverse .line{
+        stroke: #fff;
+    }
     .menu {
         background-color: transparent;
         border: none;

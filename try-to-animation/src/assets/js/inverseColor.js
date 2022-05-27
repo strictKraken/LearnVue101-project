@@ -1,18 +1,17 @@
-"use strict";
-
 import $ from 'jquery';
 
-export function inverseColor() {
-        //const $itemInverse = $('[burger]');
-        let $inverseBlockPosition = $('[inverse]');
-        $inverseBlockPosition = $($inverseBlockPosition).scrollTop;
-        console.log(`itemForInverse = ${$inverseBlockPosition}`);  
-        // $(window).on('scroll',function() {
+function inverseColor() {
+		let $itemInverse = $('[burger]');
+		let $itemInversePosition = $($itemInverse)[0].getBoundingClientRect();
+		let $blockInversePosition = $('[inverse]')[0].getBoundingClientRect();
+		if($itemInversePosition.bottom >= $blockInversePosition.top + $($itemInverse).height() / 2) {
+			$($itemInverse).addClass('inverse');
+			return true;
 
-        //     let $itemInversePosition = $($itemInverse).scrollTop();
-        //     if($inverseBlockPosition === $itemInversePosition) {
-        //         $($itemInverse).addClass('inverseColor');
-        //     }
-        // });
-        
+		} else {
+			$($itemInverse).removeClass('inverse');
+			return false;
+		}	
 }
+
+export {inverseColor};

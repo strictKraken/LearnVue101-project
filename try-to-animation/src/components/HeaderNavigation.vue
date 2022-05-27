@@ -12,10 +12,7 @@ export default {
     components: {
     HeaderNavigationBurger,
 },
-    setup() {}
+    setup() {
+    }
 }
 </script>
-
-<style lang="scss">
-    .header {}
-</style>

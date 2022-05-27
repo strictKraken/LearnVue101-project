@@ -73,6 +73,7 @@ import HeaderNavigation from '@/components/HeaderNavigation.vue';
 //---------my-imports--------------------//
 import $ from 'jquery';
 import * as screenParallax from '@/assets/js/screenParallax.js';
+
 $(window).ready(function() {
 	screenParallax.screenParallax($(".mainPage__content"));
 	screenParallax.sliderParallax($('[parallaxCarusel]'));
@@ -85,7 +86,7 @@ export default {
 		HeaderNavigation,
 	},
 	setup () {
-
+		
 	}
 }
 </script>
