@@ -72,12 +72,8 @@ import MainPageArrowDown from '@/components/MainPageArrowDown.vue';
 import HeaderNavigation from '@/components/HeaderNavigation.vue';
 //---------my-imports--------------------//
 import $ from 'jquery';
-import * as screenParallax from '@/assets/js/screenParallax.js';
-
-$(window).ready(function() {
-	screenParallax.screenParallax($(".mainPage__content"));
-	screenParallax.sliderParallax($('[parallaxCarusel]'));
-})	
+import {screenParallax} from '@/assets/js/screenParallax.js';
+import {onMounted, onUnmounted} from 'vue';
 
 export default {
 	name: 'MainPage',
@@ -86,7 +82,16 @@ export default {
 		HeaderNavigation,
 	},
 	setup () {
-		
+		onMounted(() => {
+			$(window).on('scroll', function() {
+				$(window).on('scroll', screenParallax($(".mainPage__content")));
+			});
+		});
+		onUnmounted(() => {
+			$(window).unbind('scroll', function() {
+				screenParallax($(".mainPage__content"));
+			});
+		});
 	}
 }
 </script>

@@ -16,8 +16,7 @@ export function screenParallax($mainPage) {
 		}
 	}
 	scrollParalax();
-	$(window).on('scroll', scrollParalax);
-	
+	//$(window).on('scroll', scrollParalax);
 }
 
 export function sliderParallax($Slider) {
