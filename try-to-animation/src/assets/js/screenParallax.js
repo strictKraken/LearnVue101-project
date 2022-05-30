@@ -2,23 +2,16 @@
 
 import $ from 'jquery';
 
-export function screenParallax($mainPage) {
-	const speedScroll = 60;
+function screenParallax($mainPage) {
+	const speedScroll = 10;
 
-	function scrollParalax(){
-		let $scrollPosition = $(window).scrollTop();
-		let $windowHeight = $(window).height();
-
-		if ($scrollPosition * speedScroll / $windowHeight <= speedScroll) {
-			$($mainPage).css(
-			"transform", `translateY(${$scrollPosition * speedScroll /$windowHeight}vh)`
-			)
-		}
-	}
-	scrollParalax();
-	//$(window).on('scroll', scrollParalax);
+	let $scrollPosition = $(window).scrollTop();
+	console.log($mainPage.height(), $scrollPosition);		
+	if($mainPage.height() > $scrollPosition) {
+		$($mainPage).css(
+			"transform", `translateY(${-$scrollPosition*.25 / speedScroll }vh)`
+		)
+	} 
 }
 
-export function sliderParallax($Slider) {
-	console.log($($Slider));
-}
+export {screenParallax}

@@ -1,5 +1,5 @@
 <template>
-	<div class="h-full">
+	<div class="">
 		<MainPage>
 		</MainPage>
 	</div>
@@ -19,18 +19,21 @@ export default {
 
 <style lang="scss">
 	#app {
-		height: 100%;
+		position: relative;
 	}
 	body, html {
-		// height: 100%;
+	}
+	body {
+		overflow: overlay;
 	}
 	//width
 	::-webkit-scrollbar {
 		width: 10px;
+		height: 10px;
 	}
 	//track
 	::-webkit-scrollbar-track {
-		background: rgb(202, 210, 245);
+		background: rgba(202, 210, 245, 0.2);
 		//background: transparent;
 	}
 	//handle
